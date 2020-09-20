@@ -1,0 +1,38 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## versioned-symbol.dpatch by Junichi Uekawa <dancer@debian.org>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: an example of implementing a versioned symbol
+
+@DPATCH@
+diff -urNad --exclude=CVS --exclude=.svn ./Makefile.am /tmp/dpep-work.pts2ke/libshared/Makefile.am
+--- ./Makefile.am	2005-07-09 20:49:05.000000000 +0900
++++ /tmp/dpep-work.pts2ke/libshared/Makefile.am	2005-07-11 15:49:10.422197304 +0900
+@@ -4,7 +4,7 @@
+ 
+ ## The information for libtool to construct SONAME;
+ ## info '(libtool) Libtool versioning'
+-libshared_la_LDFLAGS = -version-info 0:0:0 
++libshared_la_LDFLAGS = -version-info 0:0:0 -Wl,--version-script,shared.ver 
+ 
+ ## The path to include files you composed, so that the 
+ ## test program and shared library can find it.
+diff -urNad --exclude=CVS --exclude=.svn ./shared.ver /tmp/dpep-work.pts2ke/libshared/shared.ver
+--- ./shared.ver	1970-01-01 09:00:00.000000000 +0900
++++ /tmp/dpep-work.pts2ke/libshared/shared.ver	2005-07-11 15:49:10.423197152 +0900
+@@ -0,0 +1,15 @@
++/* Hide some symbols */
++HIDDEN {
++  local:
++	__*;
++	_rest*;
++	_save*;
++};
++
++/* 
++ * Add a weak symbols (versioned symbols) so that binaries linked against the
++ * shared library will pick up the versioned symbol.
++ */
++libshared0 {
++	*;
++};

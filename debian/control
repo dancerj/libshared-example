@@ -1,0 +1,20 @@
+Source: libshared
+Section: libs
+Priority: example
+Maintainer: Junichi Uekawa <dancer@debian.org>
+Build-Depends: debhelper (>> 4.0.0), libtool, d-shlibs (>= 0.4), doc++, binutils (>= 2.14.90.0.7)
+Standards-Version: 3.6.2
+
+Package: libshared0
+Architecture: any
+Section: libs
+Depends: ${shlibs:Depends}
+Description: example runtime shared library package
+
+Package: libshared0-dev
+Architecture: any
+Section: devel
+Depends: libshared0 (= ${Source-Version}), ${devlibs:Depends}
+Provides: libshared-dev
+Conflicts: libshared-dev
+Description: example development package

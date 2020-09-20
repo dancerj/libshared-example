@@ -1,0 +1,10 @@
+2005-07-08  Junichi Uekawa  <dancer@debian.org>
+
+	* testprint.c: Initial implementation.
+
+	* shared.h: Initial implementation.
+
+	* shared.c: Initial implementation.
+
+	* Initial Version.
+

@@ -1,0 +1,24 @@
+========================================
+AN EXAMPLE SIMPLE SHARED LIBRARY PACKAGE
+========================================
+
+The files to check:
+
+autogen.sh: how to run libtool and autotools
+configure.ac: An example of using autotools for libtool
+Makefile.am: An example of shared library makefile with automake
+debian/rules: A rules file using d-shlibs
+debian/control: A control file using d-shlibs
+debian/patches/versioned-symbol.dpatch: A patch to use versioned symbol
+
+
+*.c 
+*.h: The programs that don't really do much.
+
+
+To run the example scripts;
+
+./autogen.sh 
+./configure
+make
+make check
